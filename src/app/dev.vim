@@ -25,6 +25,18 @@ tree.custom_column('time', {
 --   readonly_icon="X",
 --   selected_icon="*",
 -- })
+
+-- User interface design
+-- keymap(keys, action1, action2, ...)  action can be `vim action` or `tree action`
+tree.keymap('cp', 'copy')
+tree.keymap('s', {'drop', 'split'})
+tree.keymap('s', {'multi', {{'drop', 'split'}, 'quit'}})
+tree.keymap('s', {'drop', 'split'}, 'quit')
+tree.keymap('cd', {'cd', {'.'}})
+-- tree action and vim action
+tree.keymap('<Tab>', 'toggle_select', 'j')
+-- callable need to be evaluated every time
+tree.keymap([[\]], {'cd', vim.fn.getcwd})
 EOF
 
 autocmd FileType tree call s:set_tree()

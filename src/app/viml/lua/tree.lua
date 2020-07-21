@@ -199,6 +199,18 @@ function __expand(path)
   end
   return __substitute_path_separator(path)
 end
+function M.keymap(lhs, ...)
+  local args = {...}
+  for i, a in ipairs(args) do
+    -- print(i, vim.inspect(a))
+    if type(a)=='table' then
+
+    end
+  end
+  -- call_async_action(action, args)
+  vim.api.nvim_set_keymap('n', '<c-k>', '<cmd>lua print("hell")<CR>', {nowait=true})
+  -- print('----------')
+end
 function __remove_quote_pairs(s)
   -- remove leading/ending quote pairs
   local t = s
